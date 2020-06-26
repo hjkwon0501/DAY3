@@ -33,10 +33,7 @@ SECURITY WARNING: You are building a Docker image from Windows against a non-Win
 $ docker images | grep nginx
 hjkwon0501/nginx                     latest              0094129d1bbb        40 minutes ago      155MB
 ```
-# DOCKER RUN
+# DOCKER RUN / 결과 확인
 ```
-$ winpty docker run -it --name n1 hjkwon0501/nginx
-
-$ docker ps -a |grep nginx
-3ffce43463cb        hjkwon0501/nginx         "nginx -g 'daemon of…"   36 minutes ago      Exited (0) 2 minutes ago                            n1
+$winpty docker run -it --name v2 -p 8888:80 hjkwon0501/nginx
 ```
