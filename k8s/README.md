@@ -40,7 +40,7 @@ nginx2-5f88676fb4        20        20        20      31m
 
 # EXPOSE
 
-'''
+```
 $ kubectl expose deployment/nginx2 --type="NodePort" --port 80
 Error from server (AlreadyExists): services "nginx2" already exists
 
@@ -68,8 +68,7 @@ Endpoints:                10.1.0.120:80,10.1.0.121:80,10.1.0.122:80 + 17 more...
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
-'''
-
+```
   
 #RESULT
 ![result](HJ.png)
