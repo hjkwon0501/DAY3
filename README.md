@@ -1,8 +1,15 @@
 # DAY3
 
-# IMAGE BUILD SCRIPT
+# DOCKERFILE
 ```
-user@DESKTOP-14530KF MINGW64 /c/User/user/test
+FROM ubuntu
+RUN apt update
+RUN apt install -y nginx
+CMD ["nginx","-g","daemon off;"]
+```
+
+# IMAGE BUILD
+```
 $ docker build --tag hjkwon0501/nginx .
 Sending build context to Docker daemon  601.1kB
 Step 1/4 : FROM ubuntu
