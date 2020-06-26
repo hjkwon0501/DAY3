@@ -37,4 +37,4 @@ hjkwon0501/nginx                     latest              0094129d1bbb        40 
 ```
 $winpty docker run -it --name v2 -p 8888:80 hjkwon0501/nginx
 ```
-![result1](Capture.png)
+![result1](Capture.PNG)
