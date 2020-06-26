@@ -38,43 +38,38 @@ NAME                     DESIRED   CURRENT   READY   AGE
 nginx2-5f88676fb4        20        20        20      31m
 ```
 
-# Description 
-```
-$ kubectl describe deploy/nginx2
-Name:                   nginx2
-Namespace:              default
-CreationTimestamp:      Fri, 26 Jun 2020 15:05:07 +0900
-Labels:                 run=nginx2
-Annotations:            deployment.kubernetes.io/revision: 1
-Selector:               run=nginx2
-Replicas:               20 desired | 20 updated | 20 total | 20 available | 0 unavailable
-StrategyType:           RollingUpdate
-MinReadySeconds:        0
-RollingUpdateStrategy:  25% max unavailable, 25% max surge
-Pod Template:
-  Labels:  run=nginx2
-  Containers:
-   nginx2:
-    Image:        hjkwon0501/nginx
-    Port:         80/TCP
-    Host Port:    0/TCP
-    Environment:  <none>
-    Mounts:       <none>
-  Volumes:        <none>
-Conditions:
-  Type           Status  Reason
-  ----           ------  ------
-  Progressing    True    NewReplicaSetAvailable
-  Available      True    MinimumReplicasAvailable
-OldReplicaSets:  <none>
-NewReplicaSet:   nginx2-5f88676fb4 (20/20 replicas created)
-Events:
-  Type    Reason             Age   From                   Message
-  ----    ------             ----  ----                   -------
-  Normal  ScalingReplicaSet  38m   deployment-controller  Scaled up replica set nginx2-5f88676fb4 to 1
-  Normal  ScalingReplicaSet  37m   deployment-controller  Scaled up replica set nginx2-5f88676fb4 to 20
+# EXPOSE
 
-```
+'''
+$ kubectl expose deployment/nginx2 --type="NodePort" --port 80
+Error from server (AlreadyExists): services "nginx2" already exists
+
+
+$ kubectl get services
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        6h31m
+nginx2       NodePort    10.101.31.137   <none>        80:30593/TCP   10m
+
+
+user@DESKTOP-14530KF MINGW64 /c/User/user/DAY3/k8s (master)
+$  kubectl describe Services/nginx2
+Name:                     nginx2
+Namespace:                default
+Labels:                   run=nginx2
+Annotations:              <none>
+Selector:                 run=nginx2
+Type:                     NodePort
+IP:                       10.101.31.137
+LoadBalancer Ingress:     localhost
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30593/TCP
+Endpoints:                10.1.0.120:80,10.1.0.121:80,10.1.0.122:80 + 17 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+'''
+
   
 #RESULT
 ![result](HJ.png)
