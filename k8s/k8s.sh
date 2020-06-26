@@ -1,4 +1,3 @@
-name = $1
+kubectl run nginx2 --image=hjkwon0501/nginx --port=80
+kubectl scale deployment nginx2 --replicas=20
 
-kubectl run $1 --image=hjkwon0501/nginx --port=80
-kubectl scale deployment $1 --replicas=20
